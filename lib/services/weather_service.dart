@@ -6,13 +6,16 @@ import 'package:weather_app/model/weather_model.dart';
 import 'package:http/http.dart' as http;
 
 class WeatherService{
-  static const BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
+  static const baseUrl = "https://api.openweathermap.org/data/2.5/weather";
+  //https://api.openweathermap.org/data/3.0/on
+  //ecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
   final String apiKey;
 
   WeatherService(this.apiKey);
 
   Future<Weather> getWeather(String cityName) async{
-    final response = await http.get(Uri.parse('$BASE_URL?q=$cityName&appid=$apiKey&units=metric'));
+    final response = await http.get(Uri.parse('$baseUrl?q=$cityName&appid=$apiKey'));
+    //final response = await http.get(Uri.parse('$baseUrl/onecall?lat=$lat&lon=$long&appid=${ApiKeys.apikey}'));
 
     if(response.statusCode == 200){
       return Weather.fromJson(jsonDecode(response.body));
@@ -41,7 +44,7 @@ class WeatherService{
     String? city = placemark[0].locality;
 
 
-    return city ?? "";
+    return city ?? "London";
   }
 
 }
