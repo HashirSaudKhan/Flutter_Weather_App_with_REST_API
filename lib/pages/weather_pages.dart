@@ -43,7 +43,7 @@ String getWeatherAnimation(String? mainCondition){
     case 'haze':
     case 'dust':
     case 'fog':
-      return 'assets/cloudy.json';
+      return 'assets/clear.json';
     case 'rain':
     case 'drizzle':
     case 'shower rain':
@@ -81,7 +81,9 @@ String getWeatherAnimation(String? mainCondition){
             Lottie.asset(getWeatherAnimation(_weather?.mainCondition)),
 
             //temperature
-            Text('${_weather?.temperature}°C')
+            Text('${_weather?.temperature}°C'),
+
+            Text(_weather?.mainCondition ??  "")
           ],
         ),
       ),
