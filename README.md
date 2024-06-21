@@ -1,7 +1,4 @@
 # Flutter Simple Weather App w/ REST API
- 
-A brief description of what this project does and who it's for
-
 
 ## API Reference
 
